@@ -1,0 +1,17 @@
+{% extends 'BlogPost/base.html' %}
+{% block content %}
+
+<a href="{% url 'BlogPost:new_post' %}">New Post</a>
+<ul>
+  {% for post in posts %}
+  <li>
+    <p>{{ post.date_added }}</p>
+    <p>{{ post.title }}</p>
+    <p>{{ post.text }} <a href="{% url 'BlogPost:delete_post' post.id %}">delete post<a></p>
+    
+    <p><a href="{% url 'BlogPost:edit_post' post.id %}">Edit Post</a></p>
+  </li>
+
+  {% endfor %}
+</ul>
+{% endblock content %}
